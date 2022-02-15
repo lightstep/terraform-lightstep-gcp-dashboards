@@ -9,18 +9,18 @@ terraform {
 }
 
 resource "lightstep_metric_dashboard" "gcp_logging_metrics_dashboard" {
-  project_name = var.lightstep_project
+  project_name   = var.lightstep_project
   dashboard_name = "GCP Logging Metrics - terraform created"
 
- chart {
+  chart {
     name = "Logging Metrics"
     rank = "1"
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
+      query_name = "a"
+      display    = "line"
+      hidden     = false
 
       metric              = "logging.googleapis.com/billing/bytes_ingested"
       timeseries_operator = "rate"
@@ -28,7 +28,7 @@ resource "lightstep_metric_dashboard" "gcp_logging_metrics_dashboard" {
 
       group_by {
         aggregation_method = "sum"
-        keys = ["resource_type",]
+        keys               = ["resource_type", ]
       }
 
     }

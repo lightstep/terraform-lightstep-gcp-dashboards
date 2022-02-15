@@ -9,7 +9,7 @@ terraform {
 }
 
 resource "lightstep_metric_dashboard" "gcp_compute_networking_dashboard" {
-  project_name = var.lightstep_project
+  project_name   = var.lightstep_project
   dashboard_name = "[ls-internal] New Dashboard"
 
   chart {
@@ -18,9 +18,9 @@ resource "lightstep_metric_dashboard" "gcp_compute_networking_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
+      query_name = "a"
+      display    = "line"
+      hidden     = false
 
       metric              = "compute.googleapis.com/instance/network/received_packets_count"
       timeseries_operator = "rate"
@@ -28,7 +28,7 @@ resource "lightstep_metric_dashboard" "gcp_compute_networking_dashboard" {
 
       group_by {
         aggregation_method = "sum"
-        keys = ["instance_id",]
+        keys               = ["instance_id", ]
       }
 
     }
@@ -41,9 +41,9 @@ resource "lightstep_metric_dashboard" "gcp_compute_networking_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
+      query_name = "a"
+      display    = "line"
+      hidden     = false
 
       metric              = "compute.googleapis.com/quota/instances_per_vpc_network/limit"
       timeseries_operator = "last"
@@ -51,7 +51,7 @@ resource "lightstep_metric_dashboard" "gcp_compute_networking_dashboard" {
 
       group_by {
         aggregation_method = "sum"
-        keys = []
+        keys               = []
       }
 
     }

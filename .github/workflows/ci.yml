@@ -51,6 +51,7 @@ jobs:
 
     - name: Lint root module
       run: |
+        tflint --init
         tflint --config ${{ github.workspace }}/.tflint.hcl ${{ github.workspace }}
     - name: Lint modules directory in a loop
       run: |

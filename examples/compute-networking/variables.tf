@@ -1,19 +1,17 @@
 variable "lightstep_project" {
   description = "Name of Lightstep project"
   type        = string
-  default     = "terraform-shop"
 }
 
 variable "lightstep_organization" {
   description = "Name of Lightstep organization"
   type        = string
-  default     =  "LightStep"
 }
 
 variable "lightstep_env" {
   description = "Lightstep environment"
   type        = string
-  default     = "staging"
+  default     = "public"
 }
 
 variable "lightstep_api_key_env_var" {

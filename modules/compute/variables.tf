@@ -7,7 +7,7 @@ variable "lightstep_project" {
 variable "lightstep_organization" {
   description = "Name of Lightstep organization"
   type        = string
-  default     =  "LightStep"
+  default     = "LightStep"
 }
 
 variable "lightstep_env" {

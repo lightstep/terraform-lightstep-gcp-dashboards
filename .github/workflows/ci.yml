@@ -33,9 +33,9 @@ jobs:
         terraform fmt -check -diff -recursive ${{ github.workspace }}
 
     - name: Terraform Init
-        id: init
-        run: terraform init
-
+      id: init
+      run: |
+        terraform init
   terraform_lint:
 
     name: Run terraform-lint

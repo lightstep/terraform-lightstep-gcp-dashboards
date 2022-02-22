@@ -10,12 +10,6 @@ defaults:
     shell: bash
 
 jobs:
-
-  terraform_run:
-     - name: Terraform Init
-        id: init
-        run: terraform init
-        
   terraform_format:
 
     name: Run terraform fmt
@@ -37,6 +31,11 @@ jobs:
     - name: Format all .tf files recursively
       run: |
         terraform fmt -check -diff -recursive ${{ github.workspace }}
+
+    - name: Terraform Init
+        id: init
+        run: terraform init
+
   terraform_lint:
 
     name: Run terraform-lint

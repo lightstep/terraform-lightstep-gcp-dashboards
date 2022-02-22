@@ -10,6 +10,12 @@ defaults:
     shell: bash
 
 jobs:
+
+  terraform_run:
+     - name: Terraform Init
+        id: init
+        run: terraform init
+        
   terraform_format:
 
     name: Run terraform fmt

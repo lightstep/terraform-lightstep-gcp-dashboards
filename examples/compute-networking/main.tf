@@ -1,28 +1,23 @@
-resource "lightstep_metric_dashboard" "exported_dashboard" {
-  project_name   = var.project
-  dashboard_name = "Compute Networking New Dashboard"
-
-  chart {
-    name = "terraform-lightstep-gcp networking dashboards"
-    rank = "0"
-    type = "timeseries"
-
-    query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "compute.googleapis.com/instance/network/received_packets_count"
-      timeseries_operator = "rate"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["instance_id", ]
-      }
-
+terraform {
+  required_providers {
+    lightstep = {
+      source  = "lightstep/lightstep"
+      version = "1.51.6"
     }
-
   }
+  required_version = ">= v1.1.0"
+}
 
+provider "lightstep" {
+  api_key_env_var = var.lightstep_api_key_env_var
+  organization    = var.lightstep_organization
+  environment     = var.lightstep_env
+}
+
+module "gcp_compute_networking_dashboard"{
+  # When using these modules in your own templates, you will need to use a Git URL with a ref attribute that pins you
+  # to a specific version of the modules, such as the following example:
+  # source = "git::git@github.com:lightstep/terraform-lightstep-aws-dashboards.git//modules/ec2-dashboard?ref=v0.0.1"
+  source            = "../../modules/compute"
+  lightstep_project = var.lightstep_project
 }

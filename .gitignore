@@ -39,3 +39,4 @@ terraform.rc
 modules/.DS_Store
 .DS_Store
 modules/.DS_Store
+examples/.DS_Store

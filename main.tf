@@ -2,10 +2,10 @@ terraform {
   required_providers {
     lightstep = {
       source  = "lightstep/lightstep"
-      version = ">= 1.60.0"
+      version = "1.51.6"
     }
   }
-  required_version = ">= v1.0.11"
+  required_version = ">= v1.1.0"
 }
 
 provider "lightstep" {
@@ -14,10 +14,27 @@ provider "lightstep" {
   environment     = var.lightstep_env
 }
 
-module "lightstep_gcp_dashboard_todo" {
-  # When using these modules in your own templates, you will need to use a Git URL with a ref attribute that pins you
-  # to a specific version of the modules, such as the following example:
-  # source = "git::git@github.com:lightstep/terraform-lightstep-aws-alerts.git//modules/ec2-alerts?ref=v0.0.1"
-  source            = "./modules/gcp-module-todo"
+module "lightstep_compute_networking_dashboard" {
+  source            = "./modules/compute"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_cloud_storage_dashboard" {
+  source            = "./modules/storage"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_logging_metrics_dashboard" {
+  source            = "./modules/logging"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_service_runtime_dashboard" {
+  source            = "./modules/service-runtime"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_agent_dashboard" {
+  source            = "./modules/agent"
   lightstep_project = var.lightstep_project
 }

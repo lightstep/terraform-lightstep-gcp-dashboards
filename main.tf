@@ -38,3 +38,18 @@ module "lightstep_agent_dashboard" {
   source            = "./modules/agent"
   lightstep_project = var.lightstep_project
 }
+
+module "lightstep_bigtable_dashboard" {
+  source            = "./modules/bigtable"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_cloudsql_dashboard" {
+  source            = "./modules/cloudsql"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_pubsub_dashboard" {
+  source            = "./modules/pubsub"
+  lightstep_project = var.lightstep_project
+}

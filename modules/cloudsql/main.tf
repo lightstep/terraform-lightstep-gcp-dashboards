@@ -8,13 +8,13 @@ terraform {
   required_version = ">= v1.1.0"
 }
 
-resource "lightstep_metric_dashboard" "gcp_compute_networking_dashboard" {
+resource "lightstep_metric_dashboard" "gcp_cloudsql_dashboard" {
   project_name   = var.lightstep_project
-  dashboard_name = "GCP Compute - terraform created"
+  dashboard_name = "GCP Cloudsql - terraform created"
 
   chart {
-    name = "compute.googleapis.com/instance/uptime"
-    rank = "3"
+    name = "cloudsql.googleapis.com/database/cpu/utilization"
+    rank = "2"
     type = "timeseries"
 
     query {
@@ -22,7 +22,7 @@ resource "lightstep_metric_dashboard" "gcp_compute_networking_dashboard" {
       display    = "line"
       hidden     = false
 
-      metric              = "compute.googleapis.com/instance/uptime"
+      metric              = "cloudsql.googleapis.com/database/cpu/utilization"
       timeseries_operator = "rate"
 
 
@@ -36,4 +36,3 @@ resource "lightstep_metric_dashboard" "gcp_compute_networking_dashboard" {
   }
 
 }
-

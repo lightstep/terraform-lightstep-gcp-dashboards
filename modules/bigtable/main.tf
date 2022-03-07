@@ -8,13 +8,13 @@ terraform {
   required_version = ">= v1.1.0"
 }
 
-resource "lightstep_metric_dashboard" "gcp_compute_networking_dashboard" {
+resource "lightstep_metric_dashboard" "gcp_bigtable_dashboard" {
   project_name   = var.lightstep_project
-  dashboard_name = "GCP Compute - terraform created"
+  dashboard_name = "GCP BigTable dashboard - terraform created"
 
   chart {
-    name = "compute.googleapis.com/instance/uptime"
-    rank = "3"
+    name = "bigtable.googleapis.com/server/request_count"
+    rank = "0"
     type = "timeseries"
 
     query {
@@ -22,13 +22,13 @@ resource "lightstep_metric_dashboard" "gcp_compute_networking_dashboard" {
       display    = "line"
       hidden     = false
 
-      metric              = "compute.googleapis.com/instance/uptime"
+      metric              = "bigtable.googleapis.com/server/request_count"
       timeseries_operator = "rate"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
+        keys               = ["method", ]
       }
 
     }
@@ -36,4 +36,3 @@ resource "lightstep_metric_dashboard" "gcp_compute_networking_dashboard" {
   }
 
 }
-

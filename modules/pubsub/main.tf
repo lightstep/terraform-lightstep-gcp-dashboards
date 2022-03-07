@@ -8,13 +8,13 @@ terraform {
   required_version = ">= v1.1.0"
 }
 
-resource "lightstep_metric_dashboard" "gcp_compute_networking_dashboard" {
+resource "lightstep_metric_dashboard" "gcp_pubsub_dashboard" {
   project_name   = var.lightstep_project
-  dashboard_name = "GCP Compute - terraform created"
+  dashboard_name = "GCP Agent- terraform created"
 
   chart {
-    name = "compute.googleapis.com/instance/uptime"
-    rank = "3"
+    name = "pubsub.googleapis.com/snapshot/config_updates_count"
+    rank = "1"
     type = "timeseries"
 
     query {
@@ -22,13 +22,13 @@ resource "lightstep_metric_dashboard" "gcp_compute_networking_dashboard" {
       display    = "line"
       hidden     = false
 
-      metric              = "compute.googleapis.com/instance/uptime"
+      metric              = "pubsub.googleapis.com/snapshot/config_updates_count"
       timeseries_operator = "rate"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
+        keys               = ["snapshot_id", "operation_type", ]
       }
 
     }

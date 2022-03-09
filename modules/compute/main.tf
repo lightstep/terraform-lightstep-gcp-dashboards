@@ -35,5 +35,51 @@ resource "lightstep_metric_dashboard" "gcp_compute_networking_dashboard" {
 
   }
 
+  chart {
+    name = "compute.googleapis.com/guest/cpu/load_15m"
+    rank = "4"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "compute.googleapis.com/guest/cpu/load_15m"
+      timeseries_operator = "rate"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
+  chart {
+    name = "compute.googleapis.com/nat/open_connections"
+    rank = "5"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "compute.googleapis.com/nat/open_connections"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
 }
 

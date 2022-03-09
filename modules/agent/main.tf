@@ -35,4 +35,50 @@ resource "lightstep_metric_dashboard" "gcp_agent_dashboard" {
 
   }
 
+  chart {
+    name = "agent.googleapis.com/agent/memory_usage"
+    rank = "4"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "agent.googleapis.com/agent/memory_usage"
+      timeseries_operator = "rate"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
+  chart {
+    name = "agent.googleapis.com/agent/uptime"
+    rank = "5"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "agent.googleapis.com/agent/uptime"
+      timeseries_operator = "rate"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
 }

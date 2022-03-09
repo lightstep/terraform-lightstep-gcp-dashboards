@@ -35,4 +35,50 @@ resource "lightstep_metric_dashboard" "gcp_bigtable_dashboard" {
 
   }
 
+  chart {
+    name = "bigtable.googleapis.com/cluster/cpu_load"
+    rank = "1"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "bigtable.googleapis.com/cluster/cpu_load"
+      timeseries_operator = "rate"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
+  chart {
+    name = "bigtable.googleapis.com/cluster/cpu_load_hottest_node"
+    rank = "2"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "bigtable.googleapis.com/cluster/cpu_load_hottest_node"
+      timeseries_operator = "rate"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
 }

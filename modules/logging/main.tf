@@ -35,4 +35,50 @@ resource "lightstep_metric_dashboard" "gcp_logging_metrics_dashboard" {
 
   }
 
+  chart {
+    name = "logging.googleapis.com/log_entry_count"
+    rank = "2"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "logging.googleapis.com/log_entry_count"
+      timeseries_operator = "rate"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
+  chart {
+    name = "logging.googleapis.com/exports/byte_count"
+    rank = "3"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "logging.googleapis.com/exports/byte_count"
+      timeseries_operator = "rate"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
 }

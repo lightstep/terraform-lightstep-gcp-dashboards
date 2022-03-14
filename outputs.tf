@@ -37,3 +37,8 @@ output "lightstep_pubsub_dashboard_url" {
   value       = module.lightstep_pubsub_dashboard.dashboard_url
   description = "Lightstep GCP Bigtable Dashboard URL"
 }
+
+output "lightstep_kubernetes_dashboard_url" {
+  value       = module.lightstep_kubernetes_dashboard.dashboard_url
+  description = "Lightstep GCP Bigtable Dashboard URL"
+}

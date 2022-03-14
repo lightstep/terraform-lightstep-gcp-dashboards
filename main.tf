@@ -53,3 +53,8 @@ module "lightstep_pubsub_dashboard" {
   source            = "./modules/pubsub"
   lightstep_project = var.lightstep_project
 }
+
+module "lightstep_kubernetes_dashboard" {
+  source            = "./modules/kubernetes"
+  lightstep_project = var.lightstep_project
+}

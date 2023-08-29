@@ -9,7 +9,7 @@ terraform {
 }
 
 resource "lightstep_metric_dashboard" "gcp_logging_metrics_dashboard" {
-  project_name   = var.lightstep_project
+  project_name   = var.cloud_observability_project
   dashboard_name = "GCP Logging Metrics - terraform created"
 
   chart {

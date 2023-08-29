@@ -9,52 +9,52 @@ terraform {
 }
 
 provider "lightstep" {
-  api_key_env_var = var.lightstep_api_key_env_var
-  organization    = var.lightstep_organization
-  environment     = var.lightstep_env
+  api_key_env_var = var.cloud_observability_api_key_env_var
+  organization    = var.cloud_observability_organization
+  environment     = var.cloud_observability_env
 }
 
-module "lightstep_compute_networking_dashboard" {
-  source            = "./modules/compute"
-  lightstep_project = var.lightstep_project
+module "cloud_observability_compute_networking_dashboard" {
+  source                      = "./modules/compute"
+  cloud_observability_project = var.cloud_observability_project
 }
 
-module "lightstep_cloud_storage_dashboard" {
-  source            = "./modules/storage"
-  lightstep_project = var.lightstep_project
+module "cloud_observability_cloud_storage_dashboard" {
+  source                      = "./modules/storage"
+  cloud_observability_project = var.cloud_observability_project
 }
 
-module "lightstep_logging_metrics_dashboard" {
-  source            = "./modules/logging"
-  lightstep_project = var.lightstep_project
+module "cloud_observability_logging_metrics_dashboard" {
+  source                      = "./modules/logging"
+  cloud_observability_project = var.cloud_observability_project
 }
 
-module "lightstep_service_runtime_dashboard" {
-  source            = "./modules/service-runtime"
-  lightstep_project = var.lightstep_project
+module "cloud_observability_service_runtime_dashboard" {
+  source                      = "./modules/service-runtime"
+  cloud_observability_project = var.cloud_observability_project
 }
 
-module "lightstep_agent_dashboard" {
-  source            = "./modules/agent"
-  lightstep_project = var.lightstep_project
+module "cloud_observability_agent_dashboard" {
+  source                      = "./modules/agent"
+  cloud_observability_project = var.cloud_observability_project
 }
 
-module "lightstep_bigtable_dashboard" {
-  source            = "./modules/bigtable"
-  lightstep_project = var.lightstep_project
+module "cloud_observability_bigtable_dashboard" {
+  source                      = "./modules/bigtable"
+  cloud_observability_project = var.cloud_observability_project
 }
 
-module "lightstep_cloudsql_dashboard" {
-  source            = "./modules/cloudsql"
-  lightstep_project = var.lightstep_project
+module "cloud_observability_cloudsql_dashboard" {
+  source                      = "./modules/cloudsql"
+  cloud_observability_project = var.cloud_observability_project
 }
 
-module "lightstep_pubsub_dashboard" {
-  source            = "./modules/pubsub"
-  lightstep_project = var.lightstep_project
+module "cloud_observability_pubsub_dashboard" {
+  source                      = "./modules/pubsub"
+  cloud_observability_project = var.cloud_observability_project
 }
 
-module "lightstep_kubernetes_dashboard" {
-  source            = "./modules/kubernetes"
-  lightstep_project = var.lightstep_project
+module "cloud_observability_kubernetes_dashboard" {
+  source                      = "./modules/kubernetes"
+  cloud_observability_project = var.cloud_observability_project
 }

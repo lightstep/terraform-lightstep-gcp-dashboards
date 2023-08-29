@@ -1,4 +1,4 @@
 output "lightstep_compute_networking_dashboard_url" {
-  value       = module.lightstep_cloud_storage_dashboard.dashboard_url
-  description = "Lightstep GCP Cloud Storage"
+  value       = module.cloud_observability_cloud_storage_dashboard.dashboard_url
+  description = "Cloud Observability GCP Cloud Storage"
 }
